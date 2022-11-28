@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 questions = [
     'Campañas con mayor impacto a lo largo del año',
     'La relación entre el tipo de post y su alcance al pagar en Facebook',
@@ -39,7 +40,7 @@ varToSum = 'Lifetime Engaged Users'
 dfByCategoryAndType = df.groupby(['Type','CategoryType'])[varToSum].sum().reset_index()
 plt.figure(figsize=(16,8))
 fig, ax = plt.subplots()
-sns.barplot(dfByCategoryAndType, x='Lifetime Engaged Users', y='Type', hue='CategoryType', ax=ax)
+sns.barplot(dfByCategoryAndType, x='Lifetime Engaged Users', y='Type', hue='CategoryType', ax=ax, palette='mako')
 st.pyplot(fig)
 
 
@@ -58,7 +59,7 @@ dfByPaidCampaignAndType['UsersPerPost'] = dfByPaidCampaignAndType[varToSum] / df
 
 plt.figure(figsize=(16,8))
 fig, ax = plt.subplots()
-sns.barplot(dfByPaidCampaignAndType, x='UsersPerPost', y='Type', hue='Paid', ax=ax)
+sns.barplot(dfByPaidCampaignAndType, x='UsersPerPost', y='Type', hue='Paid', ax=ax, palette='mako')
 st.pyplot(fig)
 
 ####### new section
@@ -118,9 +119,9 @@ dfByTimePaidVsFree
 yField ='Page total likes'
 
 fig, ax1 = plt.subplots(figsize=(12,8))
-sns.lineplot(data=dfByTimePaidVsFree, x='Month', y=yField, ax= ax1, marker='o')
+sns.lineplot(data=dfByTimePaidVsFree, x='Month', y=yField, ax= ax1, marker='o', palette='mako')
 ax2 = ax1.twinx()
-sns.barplot(dfByTimePaidVsFree, x='Month', y='Count', hue='Paid', alpha=0.6)
+sns.barplot(dfByTimePaidVsFree, x='Month', y='Count', hue='Paid', alpha=0.6, palette='mako')
 st.pyplot(fig)
 
 dfByType = df[df['Post Month'] < 13]
@@ -131,7 +132,7 @@ dfByType = dfByType.rename(columns={'like': 'Count'})
 dfByType
 fig, ax1 = plt.subplots()
 plt.figure(figsize=(12,8))
-sns.barplot(data=dfByType, x = 'Month', y='Count', hue='Type', ax=ax1)
+sns.barplot(data=dfByType, x = 'Month', y='Count', hue='Type', ax=ax1, palette='mako')
 st.pyplot(fig)
 
 ####### new section
