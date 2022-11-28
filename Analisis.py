@@ -43,8 +43,10 @@ fig, ax = plt.subplots()
 sns.barplot(dfByCategoryAndType, x='Lifetime Engaged Users', y='Type', hue='CategoryType', ax=ax, palette='mako')
 st.pyplot(fig)
 
+st.write('insight')
 
 
+###### NEW SECTION
 idx += 1
 st.subheader(questions[idx])
 dfByPaidCampaign = df.groupby(['Paid'])[varToSum].sum().reset_index()
@@ -61,6 +63,17 @@ plt.figure(figsize=(16,8))
 fig, ax = plt.subplots()
 sns.barplot(dfByPaidCampaignAndType, x='UsersPerPost', y='Type', hue='Paid', ax=ax, palette='mako')
 st.pyplot(fig)
+
+st.write('insight')
+
+plt.figure(figsize=(12,8))
+fig, ax = plt.subplots()
+ax = sns.scatterplot(data = dfByPaidCampaignAndType, x = 'UsersPerPost', y = 'Count', hue='Type', palette='mako')
+for i in range(dfByPaidCampaignAndType.shape[0]):
+    ax.text(dfByPaidCampaignAndType.UsersPerPost.iloc[i], dfByPaidCampaignAndType.Count.iloc[i], dfByPaidCampaignAndType.Paid.iloc[i], horizontalalignment='left', size='small', color='black', weight='semibold')
+st.pyplot(fig)
+
+st.write('insight')
 
 ####### new section
 idx += 1
@@ -79,7 +92,14 @@ dfByInteractionsNewPeople = pd.merge(dfByInteractionsNewPeople, dfByInteractions
 
 dfByInteractionsNewPeople['UsersPerPost'] = dfByInteractionsNewPeople[varToExplore] / dfByInteractionsNewPeople.Count
 dfByInteractionsNewPeople.sort_values('UsersPerPost')
-dfByInteractionsNewPeople
+
+
+plt.figure(figsize=(12,8))
+fig, ax = plt.subplots()
+ax = sns.barplot(dfByInteractionsNewPeople, x='UsersPerPost', y='Type', hue='CategoryType', ci=None, palette='mako')
+st.pyplot(fig)
+
+st.write('insight')
 
 ####### new section
 idx += 1
@@ -98,8 +118,12 @@ dfByInteractionsNewPeople = pd.merge(dfByInteractionsNewPeople, dfByInteractions
 
 
 dfByInteractionsNewPeople['UsersPerPost'] = dfByInteractionsNewPeople[varToExplore] / dfByInteractionsNewPeople.Count
-dfByInteractionsNewPeople
 
+plt.figure(figsize=(12,8))
+fig, ax = plt.subplots()
+ax = sns.barplot(dfByInteractionsNewPeople, x='UsersPerPost', y='Type', hue='CategoryType', ci=None, palette='mako')
+st.pyplot(fig)
+st.write('insight')
 
 ####### new section
 idx += 1
@@ -114,7 +138,7 @@ del dfByTimePaidVsFree[varToExplore]
 dfByTimePaidVsFreeMax = df.groupby(grouping)[varToExplore].max().reset_index()
 
 dfByTimePaidVsFree = pd.merge(dfByTimePaidVsFree, dfByTimePaidVsFreeMax, how='left', left_on=grouping, right_on=grouping)
-dfByTimePaidVsFree
+
 
 yField ='Page total likes'
 
@@ -129,11 +153,13 @@ grouping = ['Post Month', 'Month', 'Type']
 varToExplore = 'like'
 dfByType = dfByType.groupby(grouping)[varToExplore].count().reset_index()
 dfByType = dfByType.rename(columns={'like': 'Count'})
-dfByType
+
 fig, ax1 = plt.subplots()
 plt.figure(figsize=(12,8))
 sns.barplot(data=dfByType, x = 'Month', y='Count', hue='Type', ax=ax1, palette='mako')
 st.pyplot(fig)
+
+st.write('insight')
 
 ####### new section
 idx += 1
