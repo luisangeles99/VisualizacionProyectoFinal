@@ -9,7 +9,7 @@ problemText = 'Parte de los posts siguen campañas que son de paga, es vital con
              y cuales son los tipos de posts que más influyen en atraer nuevos usuarios, en la interacción de los usuarios actuales y \
                 y las más efectivas para que los clientes hagan click en el post.'
 
-publicText = 'Este documento está dirigido al equipo de MARKETING del cliente. Asimismo se incluye un tablero dinámico que puede ser de utilidad para analistas.'
+publicText = 'Este documento está dirigido al equipo de MARKETING del cliente.'
 
 questionsText = 'Los puntos clave se encuentran en la página de análisis de esta aplicación. Los siguientes son los puntos claves que este estudio busca responder: '
 
