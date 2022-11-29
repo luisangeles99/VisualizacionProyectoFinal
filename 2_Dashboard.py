@@ -12,3 +12,5 @@ with a:
     st.image("logo.jpeg")
 with b:
     st.title("Dashboard dinámico")
+
+

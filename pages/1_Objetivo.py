@@ -32,6 +32,9 @@ with a:
 with b:
     st.title("Objetivo de estudio")
 
+st.write('Lucia Balli A01194419')
+st.write('Luis Angeles A01273884')
+
 st.subheader('Resumen')
 st.write(introText)
 st.write(problemText)
