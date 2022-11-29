@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import numpy as np
 
 questions = [
     'Campañas con mayor impacto a lo largo del año',
@@ -21,6 +21,16 @@ st.set_page_config(
 
 #LOAD DATASET
 df = pd.read_csv('newFacebookDataset.csv')
+
+months=df.Month.unique()
+months = np.insert(months, 0, "Todos", axis= 0)
+
+add_selectbox = st.sidebar.selectbox(
+    "Elige el mes",
+    months
+)
+if add_selectbox != "Todos":
+    df = df[df["Month"]==add_selectbox]
 
 st.sidebar.info('Menú de navegación')
 
@@ -208,7 +218,7 @@ for c in conclusiones:
 st.markdown('''
 <style>
 [data-testid="stMarkdownContainer"] ul{
-    padding-left:40px;
+    padding-left:40px; 
 }
 </style>
 ''', unsafe_allow_html=True)
