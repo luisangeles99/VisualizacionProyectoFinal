@@ -193,3 +193,22 @@ st.write('Se confirma que los análisis anteriores son correctos.')
 ####### new section
 idx += 1
 st.subheader(questions[idx])
+
+
+conclusiones = [
+    'Pagar por publicidad en los posts si potencia de manera positiva la cantidad de clicks en los posts, exceptuando links.'
+    'Se debe enfocar la estrategia de atracción de clientes en estados y videos.',
+    'La estrategia para los usuarios que ya dieron like puede ser variada ya que hay una mejor distribución.',
+    'Los likes por página nuevos si están relacionados con la cantidad de posts mensuales.'
+]
+
+for c in conclusiones:
+    st.markdown('- ' + c)
+
+st.markdown('''
+<style>
+[data-testid="stMarkdownContainer"] ul{
+    padding-left:40px;
+}
+</style>
+''', unsafe_allow_html=True)
